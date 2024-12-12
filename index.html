@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <script>
+        function checkPassword() {
+            const password = prompt("Enter password to access the source code:");
+            if (password === "123") {
+                window.location.href = "sourceCodePage.html";
+            } else {
+                alert("Incorrect password. Please try again. Contact: repompojuliecor@gmail.com");
+            }
+        }
+    </script>
+    <style>
+        /* Reset default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and font settings */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: 
+                linear-gradient(rgba(94, 92, 92, 0.8), rgba(0, 0, 0, 0.7)), 
+                url('benedicto.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Navigation bar styling */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+            transform: scale(1.2);
+        }
+
+        /* Main content layout */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            flex: 1;
+            position: relative;
+        }
+
+        .background-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('bclogo-removebg-preview.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -2;
+            
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer p, footer a {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #ffcc00;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+            transform: scale(1.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 16px;
+            }
+
+            footer p, footer a {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="materials.html">Materials</a>
+        <a href="javascript:void(0);" onclick="checkPassword()">Source Code</a>
+        <a href="diagram.html">Diagram</a>
+        <a href="control.html">Controller</a>
+        <a href="members.html">Members</a>
+    </nav>
+
+    <main>
+        <div class="background-logo"></div>
+ 
+    </main>
+
+    <footer>
+        <p>© 2024 Robotics Team. All Rights Reserved.</p>
+        <a href="mailto:team@roboticsproject.com">Contact Us</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagram Slider with Descriptions</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #007acc, #ffa500);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Diagram Container */
+        .diagram-container {
+            width: 90%;
+            max-width: 800px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .diagram-container h1 {
+            font-size: 24px;
+            color: #007acc;
+            margin-bottom: 20px;
+        }
+
+        /* Slider Styling */
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .slides img {
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .nav-btn.left {
+            left: 10px;
+        }
+
+        .nav-btn.right {
+            right: 10px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #005f99;
+        }
+
+        .back-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram-container">
+        <h1>Robot Diagrams</h1>
+        <div class="slider">
+            <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
+            <div class="slides">
+                <div class="slide">
+                    <img src="diagram.png" alt="Diagram 1">
+                    <p class="description">Diagram 1: This diagram shows the overall structure of the robot.</p>
+                </div>
+                <div class="slide">
+                    <img src="uploading esp32.png" alt="Diagram 2">
+                    <p class="description">Diagram 2: A detailed view of the robot's control systems.</p>
+                </div>
+                <div class="slide">
+                    <img src="diagram3.jpg" alt="Diagram 3">
+                    <p class="description">Diagram 3: The wiring and power connections in the robot.</p>
+                </div>
+            </div>
+            <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+        </div>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back to Index</button>
+    </div>
+
+    <script>
+        // JavaScript for Slider Navigation
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.children.length;
+            if (index >= totalSlides) {
+                currentIndex = 0; // Loop back to the first slide
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1; // Loop to the last slide 
+            } else {
+                currentIndex = index;
+            }
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
+</body>
+</html>

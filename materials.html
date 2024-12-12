@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materials</title>
+<style>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #007acc, #ffa500);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Materials Container */
+.materials-container {
+    width: 90%;
+    max-width: 800px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+.materials-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007acc;
+}
+
+/* Slider */
+.slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%; /* Responsive image width */
+    max-width: 300px; /* Restrict max size */
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.description {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.description h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.description p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Arrows */
+.arrow {
+    font-size: 24px;
+    color: #007acc;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+/* Back Button */
+.back-btn {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-btn:hover {
+    background-color: #005f99;
+}
+
+.back-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .materials-container {
+        padding: 10px;
+    }
+
+    .description {
+        padding: 10px;
+    }
+
+    .slide img {
+        max-width: 250px; /* Smaller images for tablets */
+    }
+
+    .description h2 {
+        font-size: 16px;
+    }
+
+    .description p {
+        font-size: 13px;
+    }
+
+    .arrow.left, .arrow.right {
+        font-size: 18px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .materials-container {
+        width: 95%; /* Full width on mobile */
+    }
+
+    .arrow {
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .slide img {
+        max-width: 200px; /* Smaller images for mobile */
+    }
+
+    .description h2 {
+        font-size: 14px;
+    }
+
+    .description p {
+        font-size: 12px;
+    }
+
+    .arrow.left, .arrow.right {
+        font-size: 16px;
+        padding: 5px;
+    }
+}
+
+</style>
+    
+    <script>
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelector(".slides");
+            const totalSlides = document.querySelectorAll(".slide").length;
+
+            // Handle circular navigation
+            currentSlide = (index + totalSlides) % totalSlides;
+
+            // Apply the transform to the slides container
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize the first slide
+            showSlide(currentSlide);
+        });
+    </script>
+</head>
+<body>
+    <div class="materials-container">
+        <h1>Materials Used in Our Robot</h1>
+        <div class="slider">
+            <div class="arrow left" onclick="showSlide(currentSlide - 1)">&#9664;</div>
+            <div class="slides">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="esp32cam.png" alt="ESP32-CAM">
+                    <div class="description">
+                        <h2>ESP32-CAM</h2>
+                        <p>A chip that provides Wi-Fi and Bluetooth connectivity for embedded<br> devices.</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="pantiltservo.png" alt="Pan-Tilt Servo">
+                    <div class="description">
+                        <h2>Pan-Tilt Servo</h2>
+                        <p>PTZ cameras can pan, tilt, and zoom for better flexibility.</p>
+                    </div>
+                </div>
+                <!-- Additional slides -->
+                <div class="slide">
+                    <img src="arduino.png" alt="Arduino">
+                    <div class="description">
+                        <h2>Arduino</h2>
+                        <p>Open-source electronic prototyping platform enabling <br>users to create interactive electronic objects..</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="battery.png" alt="Battery">
+                    <div class="description">
+                        <h2>Battery</h2>
+                        <p>Source of the power.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="carkit.png" alt="Car Kit">
+                    <div class="description">
+                        <h2>Car Kit</h2>
+                        <p>Serve as the body of the robot.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="buckconverter.png" alt="UBEC/Buck converter to step down voltage to 5 v">
+                    <div class="description">
+                        <h2>UBEC/Buck converter to step down voltage to 5 v</h2>
+                        <p> an external switching power supply regulator<br> that is separate from brushless ESC. </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="jumperwires.png" alt="Jumperwires">
+                    <div class="description">
+                        <h2>Jumper Wires</h2>
+                        <p> are simply wires that have connector pins at each end.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="servomotor.png" alt="Servo Motor">
+                    <div class="description">
+                        <h2>Servo Motor</h2>
+                        <p>is a type of electric motor that can precisely control the <br>velocity, and acceleration of a mechanical system</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="motordriver.png" alt="L298N motor driver module ">
+                    <div class="description">
+                        <h2>is an electronic device or module that <br>manages the operation of an electric motor. </h2>
+                        <p>.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="pantiltservo.png" alt="Pan-Tilt Servo">
+                    <div class="description">
+                        <h2>Pan-Tilt Servo</h2>
+                        <p>the nature of the motion itself with one axis rotating around a <br>vertical axis and the other rotating around a horizontal axis.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="pantiltservo.png" alt="Pan-Tilt Servo">
+                    <div class="description">
+                        <h2>Pan-Tilt Servo</h2>
+                        <p>PTZ cameras can pan, tilt, and zoom for better flexibility.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow right" onclick="showSlide(currentSlide + 1)">&#9654;</div>
+        </div>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back to Index</button>
+    </div>
+</body>
+</html>
